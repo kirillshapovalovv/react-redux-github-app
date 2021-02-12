@@ -1,18 +1,21 @@
 import React from 'react'
 import {useDispatch, useSelector} from 'react-redux'
+import {BrowserRouter, Route} from 'react-router-dom'
 
-import {countCreator} from './store/reposReducer'
+import Main from './components/main/Main'
+
+import './App.scss'
 
 function App() {
 
   const dispatch = useDispatch();
-  const count = useSelector(state => state.repos.count)
 
   return (
-    <div>
-      Count: {count}
-      <button onClick={() => dispatch(countCreator(333))}>Click me</button>
-    </div>
+    <BrowserRouter>
+      <div className="app">
+        <Route path="/" component={Main} />
+      </div>
+    </BrowserRouter>
   );
 }
 
