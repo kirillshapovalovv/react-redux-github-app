@@ -1,5 +1,7 @@
 .repo {
-    border: 1px solid lightgray;
+    border: 1px solid #30363D;
+    border-radius: 10px;
+    margin-top: 10px;
     padding: 20px;
     display: flex;
     flex-direction: column;
@@ -13,5 +15,10 @@
             font-weight: 600;
             font-size: 1.2em;
         }
+    }
+
+    &-link {
+        color: #58A6FF;
+        text-decoration: none;
     }
 }

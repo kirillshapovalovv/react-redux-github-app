@@ -1,0 +1,58 @@
+.main {
+    margin-top: 20px;
+
+    .search {
+        display: flex;
+        &-input {
+            padding: 15px;
+            width: 100%;
+            border-radius: 10px 0 0 10px;
+            outline: none;
+            background: #161B22;
+            color: #fff;
+            font-size: 20px;
+            border: 1px solid #30363D;
+        }
+
+        &-btn {
+            padding: 15px;
+            border-radius: 0 10px 10px 0;
+            outline: none;
+            background: #58A6FF;
+            color: #fff;
+            font-size: 20px;
+            border: 1px solid #58A6FF;
+            cursor: pointer;
+
+            &:hover {
+                background: darken(#58A6FF, 10%);
+            }
+        }
+    }
+}
+
+.fetching-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 25%;
+}
+.fetching {
+    width: 100px;
+    height: 100px;
+    border-radius: 100%;
+    border: 2px dashed #58A6FF;
+    animation-name: search-fetching;
+    animation-duration: 0.5s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: linear;
+}
+@keyframes search-fetching {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg) scale(1.5);
+    }
+}
