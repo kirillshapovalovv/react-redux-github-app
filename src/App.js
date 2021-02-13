@@ -1,8 +1,9 @@
 import React from 'react'
 import {useDispatch, useSelector} from 'react-redux'
-import {BrowserRouter, Route} from 'react-router-dom'
+import {BrowserRouter, Route, Switch, Redirect} from 'react-router-dom'
 
 import Main from './components/main/Main'
+import Card from './components/card/Card'
 
 import './App.scss'
 
@@ -13,7 +14,11 @@ function App() {
   return (
     <BrowserRouter>
       <div className="app">
-        <Route path="/" component={Main} />
+        <Switch>
+          <Route exact path={"/"} component={Main} />
+          <Route path={"/card/:username/:reponame"} component={Card} />
+          <Redirect to={"/"} />
+        </Switch>
       </div>
     </BrowserRouter>
   );

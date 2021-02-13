@@ -2,7 +2,9 @@ import React, {useEffect, useState} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 
 import {getRepos} from '../../actions/repos'
+import {setCurrentPage} from '../../store/reposReducer'
 import Repo from '../repo/Repo'
+import {createPages} from '../../utils/createPages'
 
 import './main.scss'
 
@@ -12,17 +14,26 @@ function Main() {
 
     const repos = useSelector(state => state.repos.items)
     const isFetching = useSelector(state => state.repos.isFetching)
+    const currentPage = useSelector(state => state.repos.currentPage)
+    const perPage = useSelector(state => state.repos.perPage)
+    const totalCount = useSelector(state => state.repos.totalCount)
 
     const [searchInputValue, setSearchInputValue] = useState('')
 
+    const pagesCount = Math.ceil(totalCount / perPage)
+    const pages = []
+
+    createPages(pages, pagesCount, currentPage)
+
     // получение всех репозиториев
     useEffect(() => {
-        dispatch(getRepos())
-    }, [])
+        dispatch(getRepos(searchInputValue, currentPage, perPage))
+    }, [currentPage])
 
     const searchHandler = (e) => {
         e.preventDefault()
-        dispatch(getRepos(searchInputValue))
+        dispatch(setCurrentPage(1))
+        dispatch(getRepos(searchInputValue, currentPage, perPage))
     }
 
     return (
@@ -41,14 +52,24 @@ function Main() {
                 !isFetching
                 ?
                     <div>
-                        {repos.map(repo => <Repo repo={repo} />)}
+                        {repos.map((repo, index) => <Repo key={index} repo={repo} />)}
                     </div>
                 :
                     <div className="fetching-wrapper">
                         <div className="fetching" />
                     </div>
             }
-            
+            <div className="pages">
+                {pages.map((page, index) => (
+                    <span 
+                        key={index} 
+                        className={currentPage === page ? 'current-page' : 'page'}
+                        onClick={() => dispatch(setCurrentPage(page))}
+                    >
+                        {page}
+                    </span>
+                ))}
+            </div>
         </div>
     )
 }
