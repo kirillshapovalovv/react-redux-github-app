@@ -20,7 +20,8 @@ export default function reposReducer(state = defaultState, action) {
                 ...state, 
                 items: action.payload.items, 
                 totalCount: action.payload.total_count, 
-                isFetching: false}
+                isFetching: false
+            }
         case SET_IS_FETCHING:
             return {...state, isFetching: action.payload}
         case SET_CURRENT_PAGE:

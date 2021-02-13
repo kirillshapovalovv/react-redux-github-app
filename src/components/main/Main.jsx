@@ -4,6 +4,7 @@ import {useDispatch, useSelector} from 'react-redux'
 import {getRepos} from '../../actions/repos'
 import {setCurrentPage} from '../../store/reposReducer'
 import Repo from '../repo/Repo'
+import Loading from '../loading/Loading'
 import {createPages} from '../../utils/createPages'
 
 import './main.scss'
@@ -53,23 +54,22 @@ function Main() {
                 ?
                     <div>
                         {repos.map((repo, index) => <Repo key={index} repo={repo} />)}
+                        <div className="pages">
+                            {pages.map((page, index) => (
+                                <span 
+                                    key={index} 
+                                    className={currentPage === page ? 'current-page' : 'page'}
+                                    onClick={() => dispatch(setCurrentPage(page))}
+                                >
+                                    {page}
+                                </span>
+                            ))}
+                        </div>
                     </div>
+                    
                 :
-                    <div className="fetching-wrapper">
-                        <div className="fetching" />
-                    </div>
+                    <Loading />
             }
-            <div className="pages">
-                {pages.map((page, index) => (
-                    <span 
-                        key={index} 
-                        className={currentPage === page ? 'current-page' : 'page'}
-                        onClick={() => dispatch(setCurrentPage(page))}
-                    >
-                        {page}
-                    </span>
-                ))}
-            </div>
         </div>
     )
 }

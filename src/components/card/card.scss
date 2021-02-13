@@ -1,0 +1,22 @@
+.card {
+    display: flex;
+    margin-top: 100px;
+    flex-direction: column;
+
+    &-img {
+        border: 1px solid #30363D;
+        border-radius: 100%;
+        width: 300px;
+        height: 300px;
+    }
+    &-username {
+        font-weight: bold;
+        font-size: 30px;
+        margin-top: 30px;
+    }
+    &-stars {
+        display: block;
+        margin-top: 10px;
+        font-size: 20px;
+    }
+}

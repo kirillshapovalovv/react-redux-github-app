@@ -12,3 +12,15 @@ export const getRepos = (searchQuery = "stars:%3E1", currentPage, perPage) => {
         dispatch(setRepos(response.data))
     }
 }
+
+export const getCurrentRepo = async (username, reponame, setRepo, setIsFetching) => {
+    setIsFetching(true)
+    const response = await axios.get(`https://api.github.com/repos/${username}/${reponame}`)
+    setRepo(response.data)
+}
+
+export const getContributors = async (username, reponame, setContributors, setIsFetching) => {
+    setIsFetching(true)
+    const response = await axios.get(`https://api.github.com/repos/${username}/${reponame}/contributors?page=1&per_page=10`)
+    setContributors(response.data)
+}
