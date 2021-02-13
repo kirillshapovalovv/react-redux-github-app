@@ -1,22 +1,56 @@
 .card {
     display: flex;
     margin-top: 100px;
-    flex-direction: column;
 
-    &-img {
-        border: 1px solid #30363D;
-        border-radius: 100%;
-        width: 300px;
-        height: 300px;
+    &-user {
+        display: flex;
+        flex-direction: column;
+
+        &-img {
+            border: 1px solid #30363D;
+            border-radius: 100%;
+            width: 300px;
+            height: 300px;
+        }
+        &-username {
+            font-weight: bold;
+            font-size: 30px;
+            margin-top: 30px;
+        }
+        &-stars {
+            display: block;
+            margin-top: 10px;
+            font-size: 20px;
+        }
     }
-    &-username {
-        font-weight: bold;
-        font-size: 30px;
-        margin-top: 30px;
+
+    &-contributors {
+        margin-left: 100px;
+        flex-direction: column;
+        
+        &-title {
+            font-size: 30px;
+            margin-bottom: 30px;
+        }
     }
-    &-stars {
-        display: block;
-        margin-top: 10px;
+    &-contributor {
+        margin-bottom: 10px;
         font-size: 20px;
+    }
+}
+
+.back-btn {
+    margin-top: 30px;
+    outline: none;
+    border: 1px solid #58A6FF;
+    background: #58A6FF;
+    border-radius: 10px;
+    padding: 10px;
+    color: #fff;
+    font-weight: 500;
+    cursor: pointer;
+
+    &:hover {
+        background:darken(#58A6FF, 10%);
     }
 }

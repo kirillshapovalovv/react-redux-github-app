@@ -30,16 +30,21 @@ function Card({ history }) {
     
     return (
         <div>
-            <button onClick={clickHandler}>Bo Back</button>
+            <button onClick={clickHandler} className="back-btn">Go Back</button>
             {!isFetching
             ? 
                 <div className="card">
-                    <img src={repo.owner.avatar_url} className="card-img" alt="logo" />
-                    <div className="card-username">{repo.name}</div>
-                    <div className="card-stars">Кол-во звёзд: {repo.stargazers_count}</div>
-                    {contributors.map((contributor, index) => (
-                        <div key={index}>{index + 1}. {contributor.login}</div>
-                    ))}
+                    <div className="card-user">
+                        <img src={repo.owner.avatar_url} className="card-user-img" alt="logo" />
+                        <div className="card-user-username">{repo.name}</div>
+                        <div className="card-user-stars">Кол-во звёзд: {repo.stargazers_count}</div>
+                    </div>
+                    <div className="card-contributors">
+                        <div className="card-contributors-title">Главные контрибьютеры</div>
+                        {contributors.map((contributor, index) => (
+                            <div key={index} className="card-contributor">{index + 1}. {contributor.login}</div>
+                        ))}
+                    </div>
                 </div>
             :
                 <Loading />}
