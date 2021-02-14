@@ -7,11 +7,13 @@ const defaultState = {
     perPage: 10,
     // кол-во всех репозиториев
     totalCount: 0,
+    isFetchError: false,
 }
 
 const SET_REPOS = 'SET_REPOS'
 const SET_IS_FETCHING = 'SET_IS_FETCHING'
 const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE'
+const SET_IS_FETCH_ERROR = 'IS_FETCH_ERROR'
 
 export default function reposReducer(state = defaultState, action) {
     switch(action.type) {
@@ -26,6 +28,8 @@ export default function reposReducer(state = defaultState, action) {
             return {...state, isFetching: action.payload}
         case SET_CURRENT_PAGE:
             return {...state, currentPage: action.payload}
+        case SET_IS_FETCH_ERROR:
+            return {...state, isFetchError: action.payload}
         default:
             return state
     }
@@ -36,4 +40,5 @@ export default function reposReducer(state = defaultState, action) {
 export const setRepos = repos => ({type: SET_REPOS, payload: repos})
 export const setIsFetching = bool => ({type: SET_IS_FETCHING, payload: bool})
 export const setCurrentPage = page => ({type: SET_CURRENT_PAGE, payload: page})
+export const setIsFetchError = bool => ({type: SET_IS_FETCH_ERROR, payload: bool})
 

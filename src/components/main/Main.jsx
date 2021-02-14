@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
+import {Redirect} from 'react-router-dom'
 
 import {getRepos} from '../../actions/repos'
 import {setCurrentPage} from '../../store/reposReducer'
@@ -18,6 +19,7 @@ function Main() {
     const currentPage = useSelector(state => state.repos.currentPage)
     const perPage = useSelector(state => state.repos.perPage)
     const totalCount = useSelector(state => state.repos.totalCount)
+    const isFetchError = useSelector(state => state.repos.isFetchError)
 
     const [searchInputValue, setSearchInputValue] = useState('')
 
@@ -37,8 +39,12 @@ function Main() {
         dispatch(getRepos(searchInputValue, currentPage, perPage))
     }
 
+
     return (
         <div className="main">
+            {isFetchError && <div className="alert alert-danger" role="alert">
+                Что-то пошло не так... Пожалуйста обновите страницу!
+            </div>}
             <form className="search" onSubmit={searchHandler}>
                 <input 
                     value={searchInputValue} 
