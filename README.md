@@ -8,4 +8,7 @@
 * Github API
 
 # Screens
-![1](https://github.com/kirillshapovalovv/react-redux-github-app/src/screenshots/1.png)
+![1](https://github.com/kirillshapovalovv/react-redux-github-app/blob/main/src/screenshots/1.png)
+![2](https://github.com/kirillshapovalovv/react-redux-github-app/blob/main/src/screenshots/2.png)
+![3](https://github.com/kirillshapovalovv/react-redux-github-app/blob/main/src/screenshots/3.png)
+![4](https://github.com/kirillshapovalovv/react-redux-github-app/blob/main/src/screenshots/4.png)
